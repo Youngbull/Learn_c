@@ -1,13 +1,13 @@
 # depslib dependency file v1.0
-1462592324 source:c:\learnc-git\capture3\main.c
+1462604503 source:c:\learnc-git\capture3\main.c
 	"main.h"
 	<stdio.h>
 	<stdlib.h>
 
-1462595630 c:\learnc-git\capture3\main.h
+1462604313 c:\learnc-git\capture3\main.h
 
 1462592154 source:c:\learnc-git\capture3\main.h
 
-1462596182 source:c:\learnc-git\capture3\printf_int.c
+1462604308 source:c:\learnc-git\capture3\printf_int.c
 	<stdio.h>
 

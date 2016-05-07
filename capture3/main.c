@@ -4,6 +4,6 @@
 
 int main()
 {
-    printf1();
+    toobig();
     return 0;
 }
