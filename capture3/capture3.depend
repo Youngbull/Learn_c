@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1462604503 source:c:\learnc-git\capture3\main.c
+1462606673 source:c:\learnc-git\capture3\main.c
 	"main.h"
 	<stdio.h>
 	<stdlib.h>
