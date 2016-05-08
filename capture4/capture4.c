@@ -53,7 +53,7 @@ void input()
     char pet[30];
 
     printf("Enter your age,asserts and favorite pet.\n");
-    scanf("%d %f",&age,&asserts); // 此处需要&，另外请观察实际输入按照何种方式可以正常执行（可用于明白scanf的执行）
+    scanf("%d %f",&age,&asserts); // 此处需要&，scanf()函数使用空格（换行、制表符和空格）来决定怎样把输入分成几个字段
     scanf("%s",pet);
     printf("%d $%.2f %s\n",age,asserts,pet);
 }
