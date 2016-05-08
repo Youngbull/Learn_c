@@ -13,6 +13,7 @@
 int main()
 {
 //    talkback(); // 先导程序
-    width();
+//    width(); // printf函数的有意思的用法之一，以后还是写一写些实用的
+    input(); // scanf函数的使用
     return 0;
 }

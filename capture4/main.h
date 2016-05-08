@@ -3,6 +3,7 @@
 
 void talkback();
 void width();
+void input();
 
 #define DENSITY 62.4
 #define PAGES 784
