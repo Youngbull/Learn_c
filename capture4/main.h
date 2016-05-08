@@ -2,8 +2,9 @@
 #define MAIN_H_INCLUDED
 
 void talkback();
-
+void width();
 
 #define DENSITY 62.4
+#define PAGES 784
 
 #endif // MAIN_H_INCLUDED
