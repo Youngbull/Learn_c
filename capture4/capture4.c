@@ -50,10 +50,12 @@ void input()
 {
     int age;
     float asserts;
+    char newchar;
     char pet[30];
 
     printf("Enter your age,asserts and favorite pet.\n");
     scanf("%d %f",&age,&asserts); // 此处需要&，scanf()函数使用空格（换行、制表符和空格）来决定怎样把输入分成几个字段
-    scanf("%s",pet);
-    printf("%d $%.2f %s\n",age,asserts,pet);
+    scanf("%c",&newchar); // 针对字符型的输入方式有何不同？？？
+    scanf("%s",pet); // 输入解释为一个字符串：输入的内容以第一个非空白字符作为开始，并且包含直到下一个空白字符的全部字符
+    printf("%d $%.2f %c %s\n",age,asserts,newchar,pet);
 }
