@@ -17,6 +17,7 @@ int main()
 //    file_eof();
 //    guess_data(); // 一个低效并且错误的猜数程序
 //    showchar1(); // 一个存在问题的I/O程序，具体原因代码中有注释
-    showchar2(); //
+//    showchar2(); // showchar1的改进
+    checking();
     return 0;
 }

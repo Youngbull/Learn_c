@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 /*      用于了解getchar以及putchar的函数，在遇到‘#’字符时停止输入这里涉及到缓冲区的概念，请参看189页缓冲区内容       */
 void echo()
@@ -115,4 +116,88 @@ void showchar2() // showchar1的改进方式
         printf("Enter a newline to quit.\n");
     }
     printf("Bye.\n");
+}
+
+
+    /*      用于输入确认的函数，本函数是来向一个算术函数传送整数，
+     *      该函数计算特定范围内所有整数的平方和，限定上界不应大于1000，下界不小于-1000
+     *      包含有checking.c   get_int.c   sum_squares.c   bad_limits.c
+     */
+int get_int(void)
+{
+    int input;
+    char ch;
+
+    while(scanf("%d",&input) != 1)
+    {
+        while((ch = getchar()) != '\n')
+            putchar(ch); // 剔除错误的输入
+        printf(" is not an integer.\nPlease enter an ");
+        printf("integer value,such as 25,-178 or 3:");
+    }
+    return input;
+}
+double sum_squares(int a,int b)
+{
+    double total = 0;
+    int i;
+
+    for(i = a;i < b;i++)
+        total += i*i;
+    return total;
+}
+bool bad_limits(int begins,int ends,int low,int high)
+{
+    bool not_good = false;
+
+    if (begins > ends)
+    {
+       printf("%d isn't smaller than %d.\n",begins,ends);
+       not_good = true;
+    }
+    if (begins < low || ends < low)
+    {
+        printf("Values must be %d or greater.\n",low);
+        not_good = true;
+    }
+    if (begins > high || ends > high)
+    {
+        printf("Values must be %d or less.\n",high);
+        not_good = true;
+    }
+    return not_good;
+}
+void checking()
+{
+    const int MIN = -1000;
+    const int MAX = +1000;
+    int start;
+    int stop;
+    double answer;
+
+    printf("This program computes the sum of the squares of "
+           "integers in a range.\nThe lower bound should not "
+           "be less than -1000 and\nthe upper bound should not "
+           "be more than +1000.\nEnter the limits (enter 0 for "
+           "both limits to quit):\nlower limits: ");
+    start = get_int();
+    printf("upper limits: ");
+    stop = get_int();
+    while(start != 0 || stop != 0)
+    {
+        if(bad_limits(start,stop,MIN,MAX))
+            printf("Please try again.\n");
+        else
+        {
+            answer = sum_squares(start,stop);
+            printf("The sum of the squares of the integers from ");
+            printf("from %d to %d is %g\n",start,stop,answer);
+        }
+        printf("Enter the limits(enter 0 for both limits to quit): \n");
+        printf("lower limits: ");
+        start = get_int();
+        printf("upper limit: ");
+        stop = get_int();
+    }
+    printf("Done.\n");
 }
