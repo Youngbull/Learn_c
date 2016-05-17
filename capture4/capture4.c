@@ -13,16 +13,17 @@ void talkback()
 //   scanf("%s",&name); // 这里加不加地址符没区别，明白数组情况name本身就是地址
     scanf("%s",name); // scanf函数读取时，会在遇到的第一个空格，制表符（tab）或者换行符（newline）处停止读取。
     printf("%s,What is your weight in pounds?\n",name);
-    scanf("%f",&weight);
+    scanf("%f %f",&weight,&volume);
     siz = sizeof name; // sizeof运算符提供对象的字节数目
     letters = strlen(name);
-    volume = weight/DENSITY;
+ //   volume = weight/DENSITY;
     printf("Well,%s,your age is %2.2f cubic feet.\n",name,volume); // 这种打印格式%2.2f，一定要清楚
     printf("Also,your first name has %d letters,\n",letters);
     printf("and we have %d bytes to store it in.\n",volume);
 }
 
 /*      printf函数使用功能之一，玩的       */
+/*      printf把整数、浮点数、字符和C的字符串转换成要在屏幕上显示的文本        */
 void width()
 {
     const double RENT = 3852.99; // 知道的有三种创建常量的方式————预定义模式、const类型、枚举类型。
@@ -45,7 +46,16 @@ void width()
     printf("*%010.2f*\n",RENT); // 前导零填充字段宽度
 }
 
+void strings()
+{
+    printf("/%2s/\n",BLURB);
+    printf("/%24s/\n",BLURB);
+    printf("/%24.5s/\n",BLURB);
+    printf("/%-24.5s/\n",BLURB);
+}
+
 /*      scanf函数的使用      */
+/*      有句话说的很好——scanf将输入的字符串转换成各种形式：整数、浮点数、字符和C的字符串        */
 void input()
 {
     int age;
