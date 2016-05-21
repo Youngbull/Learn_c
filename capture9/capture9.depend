@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1463829686 source:c:\learnc-git\capture9\main.c
+	<stdio.h>
+	<stdlib.h>
+	"capture9.h"
+
+1463818823 c:\learnc-git\capture9\capture9.h
+
+1463821064 source:c:\learnc-git\capture9\capture9.c
+	<stdio.h>
+
