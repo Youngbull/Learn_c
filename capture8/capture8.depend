@@ -1,12 +1,17 @@
 # depslib dependency file v1.0
-1463461779 source:c:\learnc-git\capture8\capture8.c
+1463635999 source:c:\learnc-git\capture8\capture8.c
 	<stdio.h>
 	<stdlib.h>
+	<stdbool.h>
 
-1463501149 source:c:\learnc-git\capture8\main.c
+1463636681 source:c:\learnc-git\capture8\main.c
 	<stdio.h>
 	<stdlib.h>
 	"capture8.h"
 
 1463501106 c:\learnc-git\capture8\capture8.h
+
+1463881646 source:c:\learnc-git\capture10\capture10_test.c
+
+1463636209 source:c:\learnc-git\capture8\capture8_test.c
 

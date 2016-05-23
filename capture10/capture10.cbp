@@ -2,12 +2,12 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="capture8" />
+		<Option title="capture10" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/capture8" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/capture10" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -16,7 +16,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/capture8" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/capture10" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -31,16 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="../capture10/capture10_test.c">
+		<Unit filename="capture10.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="capture8.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="capture8.h" />
-		<Unit filename="capture8_test.c">
-			<Option compilerVar="CC" />
-		</Unit>
+		<Unit filename="capture10.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
