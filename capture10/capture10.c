@@ -138,3 +138,135 @@ void arf()
     printf("The dip array after calling mult_array(): \n");
     show_array(dip,SIZE);
 }
+
+    /*
+     * 指针常量的学习，在不同情况下的结果。具体有：
+     * 常指针、常引用定义格式为———— const 数据类型 常量名=常量值；
+     * 例如，const int *p = &b和int const *p = &b；（常指针） const int &m= b；（常引用）
+     * 常指针和常引用功能上受到限制，即不能通过它们更改其指向的变量的数据！！！！
+     *
+     * 指针常量，定义格式———— 数据类型 *const 指针常量=常量值；
+     * 例如，char ch， *const pch=&ch；（可分开或者一步完成）
+     * 也就是说这个指针本身是个常量，不可改变（指向地址），但是可通过该指针改变指向内容
+     *
+     */
+void const_test()
+{
+    double rates[5] = {88.93,100.12,59.45,183.11,340.5};
+    const double locked[4] = {0.08,0.075,0.0735,0.07};
+//    double *pnc = rates; // 产生了警告（warning），因为非常量数据的地址才可以赋给普通的指针
+                         // 常量或非常量数据的地址赋给指向常量的指针是合法的（防止通过指针修改常量的数据）
+    const double *pnc = rates; // 正确方式
+    pnc = locked;
+    printf("The number of the pointer pnc is %f.\n",*pnc);
+    // 情况一：
+//    double* const pd = rates; // pd是个指向double的常指针
+//    *pd =29.49; // 允许
+//    pd[2] = 34.5; // 允许
+//    printf("The number of rates[0] and rates[2] are %f and %f.\n",*pd,*(pd+2));
+//    pd++; // 不允许
+    // 情况二：
+//    const double* pd = rates; // pd是个指向double型常量的指针（或者double const *pd都一样）
+//    *pd = 29.49; // 不允许
+//    pd[2] = 34.5; // 不允许
+//    pd++; // 允许
+}
+
+    /* 指针和多维数组————例如：int zippo[4][2]
+     * 首先，zippo同时是数组首元素的地址，zippo首元素本身也是包含2个int的数组，因此zippo包含2个int的数组的地址
+     * 简单说，zippo[0]是一个整数大小对象的地址，而zippo是两个整数大小对象的地址；
+     *
+     * 其次，对于zippo+1和zippo[0]+1这样的运算，所以一个是两个int对象，一个是一个int对象；
+     *
+     * 对一个指针（地址）取值（使用运算符*或者带有索引的[]运算符）得到的是指针指向的对象的数值。
+     * 所以*zippo[0]代表存储在zippo[0][0]中的数值。同样*zippo代表首元素zippo[0]的值但是zippo[0]本身就是一个int数的地址，即&zippo[0][0]
+     * **zippo等价于zippo[0][0]（这种数组是双重间接的典型例子）。
+     *
+     * zippo[2][1]的等价指针符号表示为*(*(zippo+2)+1)
+     */
+void zippo1()
+{
+    int zippo[4][2] = { {2,4},{6,8},{1,3},{5,7} };
+
+    printf(" zippo = %p, &zippo[0] = %p, &zippo[0][0] = %p\n",zippo,&zippo[0],&zippo[0][0]); // 三者结果相同
+    printf(" zippo = %p, zippo + 1 = %p\n",zippo,zippo + 1);
+    printf(" zippo[0] = %p, zippo[0] + 1 = %p\n",zippo[0],zippo[0] + 1);
+    printf(" *zippo = %p, zippo + 1 = %p\n",*zippo,*zippo + 1);
+    printf(" zippo[0][0] = %d\n",zippo[0][0]);
+    printf(" *zippo[0] = %d\n",*zippo[0]);
+    printf(" **zippo = %d\n",**zippo);
+    printf(" zippo[2][1] = %d\n",zippo[2][1]);
+    printf(" *(*(zippo + 2)+1) = %d\n\n\n\n\n",*(*(zippo + 2)+1)); // 等价于zippo[2][1]
+
+    /*      多维数组的指针声明方式     */
+    int (*pz)[2]; // 指向多维数组指针的声明（这里pz指向了一包含两个int值的数组）
+                  // pz必须是一个指向两个int数组的指针，具体还要根据多维数组的定义来确定
+                  // 使用()的原因是表达式中的[]优先级高于*，因此不加括号的话就是两个指向int值的指针构成的数组，会创建两个指针
+                  // 而使用()结果就是创建了一个指向包含两个int值的数组的指针
+                  // 之所以这么做其实是有原因的，你试想一下一位数组和指针，我们试图使用*(pz+1)这样的方式实现对pz[1]的访问
+                  // 同样对二维数组，我们希望用*(*(pz+2)+1)这样的方式实现pz[2][1]（也就是3）的访问
+                  // 那么我们就希望创建一个指向两个int型数据的指针。
+    pz = zippo;
+    printf(" pz = %p, pz + 1 = %p\n",pz,pz+1);
+    printf(" pz[0] = %p, pz[0] + 1 = %p\n",pz[0],pz[0]+1);
+    printf(" *pz = %p, *pz + 1 = %p\n",*pz,*pz+1);
+    printf(" pz[0][0] = %d\n", pz[0][0]);
+    printf(" *pz[0] = %d\n",*pz[0]);
+    printf(" **pz = %d\n",**pz);
+    printf(" pz[2][1] = %d\n",pz[2][1]);
+    printf(" *(*(pz + 2) + 1) = %d\n",*(*(pz + 2) + 1));
+}
+
+    /*      处理二维数组的函数（三种声明方式）（首先应该有声明）       */
+void sum_rows(int ar[][CLOS],int rows);
+void sum_clos(int [][CLOS],int); // 可以省略名称
+int sum2d(int (*ar)[CLOS],int rows); // 与第一种方式本质相同
+                                     // 上面这三个是不同的针对多维数组声明方式
+
+void array2d(void)
+{
+    int junk[ROWS][CLOS] = {{2,4,6,8},{3,5,7,9},{12,10,8,6}};
+
+    sum_rows(junk,ROWS);
+    sum_clos(junk,ROWS);
+    printf("Sum of all elements = %d\n",sum2d(junk,ROWS));
+}
+void sum_rows(int ar[][CLOS],int rows) // 方式一：int pt[][4]（仅在pt是函数的形式参量时可以使用）
+{
+    int r;
+    int c;
+    int tot;
+
+    for(r = 0;r < rows;r++)
+    {
+        tot = 0;
+        for(c = 0;c < CLOS;c++)
+            tot += ar[r][c];
+        printf("row %d: sum = %d\n",r,tot);
+    }
+}
+void sum_clos(int ar[][CLOS], int rows) // 方式二：int ar[]
+{
+    int r;
+    int c;
+    int tot;
+
+    for(c = 0;c < CLOS;c++)
+    {
+        tot = 0;
+        for(r = 0;r < rows; r++)
+            tot += ar[r][c];
+        printf("col %d: sum  = %d\n",c,tot);
+    }
+}
+int sum2d(int ar[][CLOS],int rows)
+{
+    int r;
+    int c;
+    int tot = 0;
+
+    for(r = 0;r < rows;r++)
+        for(c = 0;c < CLOS;c++)
+        tot += ar[r][c];
+    return tot;
+}

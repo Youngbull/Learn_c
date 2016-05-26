@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1463992562 source:c:\learnc-git\capture10\capture10.c
+1464256947 source:c:\learnc-git\capture10\capture10.c
 	<stdio.h>
 	"capture10.h"
 
-1463992543 c:\learnc-git\capture10\capture10.h
+1464253346 c:\learnc-git\capture10\capture10.h
 
-1463992554 source:c:\learnc-git\capture10\main.c
+1464253371 source:c:\learnc-git\capture10\main.c
 	<stdio.h>
 	<stdlib.h>
 	"capture10.h"
