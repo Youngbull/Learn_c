@@ -217,11 +217,11 @@ void zippo1()
     printf(" *(*(pz + 2) + 1) = %d\n",*(*(pz + 2) + 1));
 }
 
-    /*      处理二维数组的函数（三种声明方式）（首先应该有声明）       */
-void sum_rows(int ar[][CLOS],int rows);
-void sum_clos(int [][CLOS],int); // 可以省略名称
-int sum2d(int (*ar)[CLOS],int rows); // 与第一种方式本质相同
-                                     // 上面这三个是不同的针对多维数组声明方式
+    /*      处理二维数组的函数（下面是三种声明方式）（首先应该有声明）       */
+void sum_rows(int ar[][CLOS],int rows); // 列数是在函数体内定义的，但是行数是靠函数传递得到的
+void sum_clos(int [][CLOS],int); // 可以省略名称，但是不能用类似int ar[][]的声明形式。因为代码需要知道，ar所指向对象的数据大小
+int sum2d(int (*ar)[CLOS],int rows); // 这种初始化的形式其实从上一个代码里面就能看出端倪。
+                                     // 这里使用int (*ar)[4],就是说ar被看做是指向包含4个int值得数组的指针（首先是一个指针）
 
 void array2d(void)
 {
@@ -231,7 +231,7 @@ void array2d(void)
     sum_clos(junk,ROWS);
     printf("Sum of all elements = %d\n",sum2d(junk,ROWS));
 }
-void sum_rows(int ar[][CLOS],int rows) // 方式一：int pt[][4]（仅在pt是函数的形式参量时可以使用）
+void sum_rows(int ar[][CLOS],int rows)
 {
     int r;
     int c;
@@ -245,7 +245,7 @@ void sum_rows(int ar[][CLOS],int rows) // 方式一：int pt[][4]（仅在pt是�
         printf("row %d: sum = %d\n",r,tot);
     }
 }
-void sum_clos(int ar[][CLOS], int rows) // 方式二：int ar[]
+void sum_clos(int ar[][CLOS], int rows) // 同样对于三维数组，需要知道两个量
 {
     int r;
     int c;
@@ -267,6 +267,48 @@ int sum2d(int ar[][CLOS],int rows)
 
     for(r = 0;r < rows;r++)
         for(c = 0;c < CLOS;c++)
+        tot += ar[r][c];
+    return tot;
+}
+
+    /* 变长数组————
+     * C99引入，允许使用变量定义数组各维。例如int a = 4,b = 5; double example[a][b];这里example就是一个变长数组
+     * 限制：必须是自动存储类，就是说它们必须在函数内部或作为函数参量声明，而且声明时不可以进行初始化
+     * 并不是说它在创建后可以改变大小，而是说维数大小可以用变量来指定
+     *
+     *
+     * 针对上一个函数来看，例如：int sum2d(int roes,int clos,int ar[rows][clos])就可以声明带有一个二维变长数组参数的函数
+     */
+
+    /*      函数声明        */
+int sum2ds(int rows,int cols,int ar[rows][cols]); // 变长数组使用方式，针对上一个函数提出的疑问。
+void vararr2d(void)
+{
+    int i,j;
+    int rs = 3;
+    int cs = 10;
+    int junk[ROWS][CLOS] = {{2,4,6,8},{3,5,7,9},{12,10,8,6}};
+    int morejunk[ROWS-1][CLOS+2] = {{20,30,40,50,60,70},{5,6,7,8,9,10}};
+    int varr[rs][cs];
+
+    for(i = 0;i < rs;i++)
+        for(j = 0;j < cs;j++)
+            varr[i][j] = i*j + j;
+    printf("3x5 array\n");
+    printf("Sum of all elements = %d\n",sum2ds(ROWS,CLOS,junk));
+    printf("2x6 array\n");
+    printf("Sum of all elements = %d\n",sum2ds(ROWS-1,CLOS+2,morejunk));
+    printf("3x10 VLA\n");
+    printf("Sum of all elements = %d\n",sum2ds(rs,cs,varr));
+}
+int sum2ds(int rows,int cols,int ar[rows][cols]) // 带有一个VLA参数的函数
+{
+    int r;
+    int c;
+    int tot = 0;
+
+    for(r = 0;r < rows;r++)
+        for(c = 0;c < cols;c++)
         tot += ar[r][c];
     return tot;
 }

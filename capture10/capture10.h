@@ -20,5 +20,6 @@ void arf();
 void const_test();
 void zippo1();
 void array2d();
+void vararr2d();
 
 #endif // CAPTURE10_H_INCLUDED
