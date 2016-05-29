@@ -21,9 +21,11 @@ int main()
 //    put_out(); // 利用puts函数证明一种错误的字符串定义方式
 //    nono(); // puts函数
 //    fputs1(); // fputs函数
-    const char *sr = "Song jun hao ";
-    put1(sr); // 不输出换行符
-    put2(sr);
-    put2("Song junhao"); // 可以直接将字符串常量传送给函数，也是地址
+//    const char *sr = "Song jun hao ";
+//    put1(sr); // 不输出换行符
+//    put2(sr);
+//    put2("Song junhao"); // 可以直接将字符串常量传送给函数，也是地址
+//    test(); // strlen函数使用
+    str_cat();
     return 0;
 }

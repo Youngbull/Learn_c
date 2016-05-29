@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "capture11.h"
 
     /* 使用字符串与用户交互
@@ -165,4 +166,40 @@ void put2(const char *input)
     }
     putchar('\n');
     printf("The count of the string is %d.\n",coun);
+}
+
+
+    /*      字符串函数       */
+    /*
+     * 其中最常用的包括strlen(),stract(),strncat()
+     * strcmp(),strncmp(),strcpy(),strncpy()
+     * 另外还会研究一下sprintf函数
+     */
+void fit(char *,unsigned int);
+void test(void)
+{
+    char mesg[] = "Hold on to your hats,hackers. ";
+
+    puts(mesg);
+    fit(mesg,7);
+    puts(mesg);
+    puts("Let's look at some more of the string. ");
+    puts(mesg + 8);
+}
+void fit(char *string,unsigned int size) // 这里并没有声明为const，是因为确实需要改变字符串
+{
+    if(strlen(string) > size)
+        *(string + size) = '\0'; // 缩小字符串长度
+}
+    /*      strcat函数（函数接受两个字符串，将第二个的一份拷贝添加到第一个字符串结尾。第二个不改变。）        */
+void str_cat(void)
+{
+    char flower[SIZE];
+    char addon[] = "s semll like old shoes";
+
+    puts("What is your favorite flower?");
+    gets(flower);
+    strcat(flower,addon);
+    puts(flower);
+    puts(addon);
 }
