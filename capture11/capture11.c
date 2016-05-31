@@ -195,11 +195,79 @@ void fit(char *string,unsigned int size) // 这里并没有声明为const，是�
 void str_cat(void)
 {
     char flower[SIZE];
+    char *twemo;
     char addon[] = "s semll like old shoes";
 
     puts("What is your favorite flower?");
-    gets(flower);
+    twemo = gets(flower); // twemo可放在strcat输出处，因为返回的是指针，而twemo指向的地方不发生改变，经过strcat，twemo和flower没区别
     strcat(flower,addon);
     puts(flower);
+    puts(twemo);
     puts(addon);
+}
+    /*      strncat函数，针对strcat函数不检查第一个数组是否能容纳第二个字符串     */
+void join_chk()
+{
+    char flower[SIZE2];
+    char addon[] = "s smell like old shoes";
+    char bug[SIZE3];
+    int available;
+
+    puts("What is your favorite flower?");
+    gets(flower);
+    if((strlen(addon) + strlen(flower) + 1) <= SIZE2) // 保证小于flower的尺寸
+       strcat(flower,addon); // 只有满足条件时才执行该操作
+    puts(flower);
+    puts("What is your favorite bug?");
+    gets(bug);
+    available = SIZE3 - strlen(bug) - 1;
+    strncat(bug,addon,available); // 需要另一个参数来指明最多允许添加的字符的数目
+    puts(bug);
+}
+    /*      strcmp函数（把用户的响应和一个已有的字符串比较）     */
+void compare() // 重点是很少有关于字符串比较的函数，还是很实用的
+{
+    char try[STRSIZE];
+
+    puts("What is buried in Grant's tomb?");
+    gets(try);
+    while(strcmp(try,ANSWER) != 0) // 很多程序员都会将(!=)省略掉，因为strcmp返回值有-1小于时，1大于时，0相同时
+    {
+        puts("No,that's wrong. Try again.");
+        gets(try);
+    }
+    puts("That's right!");
+}
+void quit_chk()
+{
+    char input[10][SIZE];
+
+    int ct = 0;
+    printf("Enter up to %d lines (type quit to quit):\n",10);
+    while(ct < 10 && gets(input[ct]) != NULL&&strcmp(input[ct],STOP) != 0)
+    {
+        ct++;
+    }
+    printf("%d strings entered\n",ct);
+}
+    /*      strncmp函数       */
+    /*
+     * strcmp函数比较字符串，会一直到找到不同的相应字符,很可能运行到最后的字符串结尾处
+     * strncmp函数则可能运行到字符串不同处，也可以比较有第三个参数指定的字符数
+
+     * 实际上就是两种方式，用在不同的地方
+     */
+void starsrch()
+{
+    char *list[LISTSIZE] = {"astronomy","astounding","astrophysics","ostracize","asterism"};
+    int count = 0;
+    int i;
+
+    for(i = 0;i < LISTSIZE;i++)
+        if(strncmp(list[i],"astro",5) == 0) // 最多比较5个
+        {
+            printf("Found: %s\n",list[i]);
+            count++;
+        }
+    printf("The list contained %d words beginning with astro.\n",count);
 }

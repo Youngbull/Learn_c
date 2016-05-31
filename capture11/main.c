@@ -26,6 +26,10 @@ int main()
 //    put2(sr);
 //    put2("Song junhao"); // 可以直接将字符串常量传送给函数，也是地址
 //    test(); // strlen函数使用
-    str_cat();
+//    str_cat(); // strcat函数的使用
+//    join_chk(); // 连接两个字符串，并检查第一个字符串的大小
+//    compare(); // strcmp函数简单实用，注意strcmp的返回值
+//    quit_chk(); //  使用strcmp函数达到输入quit字符退出或者达到规定数目退出，计数输入数据
+    starsrch(); // strncmp函数的简单运用，有字符数限制
     return 0;
 }
