@@ -33,5 +33,7 @@ void join_chk();
 void compare();
 void quit_chk();
 void starsrch();
+void copy1();
+void format();
 
 #endif // CAPTURE11_H_INCLUDED

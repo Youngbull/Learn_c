@@ -271,3 +271,47 @@ void starsrch()
         }
     printf("The list contained %d words beginning with astro.\n",count);
 }
+
+    /*      strcpy函数和strncpy函数（将一个字符串复制给另一个字符串）      */
+void copy1()
+{
+    char dest[5][40];
+    char temp[40]; // 和指针方式不同，这里确实分配了40个char行空间
+                   // 声明一个指针只需要为指针分配存储空间
+    int i = 0;
+
+    printf("Enter %d words begin with q: \n",5);
+    while(i < 5 && gets(temp))
+    {
+        if(*temp != 'q') // 使用temp[0]同样可以
+            printf("%s doesn't begin with q!\n",temp);
+        else
+        {
+            strcpy(dest[i],temp); // 将temp存放的数组copy到source中
+                                  // strncpy和strcpy函数之间的区别在于有第三个参数规定最大复制的长度，增设了保险
+            i++;
+        }
+    }
+    puts("Here are the words accepted: ");
+    for(i = 0;i < 5;i++)
+        puts(dest[i]);
+}
+
+    /*      sprintf()函数     （作用于printf类似，但是写到了字符串里面而不是输出显示）     */
+    /*      在我们使用看来的话，它的功能更像是将不同数组组合起来。     */
+void format()
+{
+    char first[STRSIZE];
+    char last[STRSIZE];
+    char formal[2*STRSIZE + 10];
+    double prize;
+
+    puts("Enter your first name: ");
+    gets(first);
+    puts("Enter your first name: ");
+    gets(last);
+    puts("Enter your prize money: ");
+    scanf("%lf", &prize);
+    sprintf(formal,"%s, %-19s: $%6.2f\n",last,first,prize); // 第二个first与第三个prize的输出可以看一下输出结果，具体输出情况
+    puts(formal);
+}

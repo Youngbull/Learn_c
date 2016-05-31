@@ -30,6 +30,8 @@ int main()
 //    join_chk(); // 连接两个字符串，并检查第一个字符串的大小
 //    compare(); // strcmp函数简单实用，注意strcmp的返回值
 //    quit_chk(); //  使用strcmp函数达到输入quit字符退出或者达到规定数目退出，计数输入数据
-    starsrch(); // strncmp函数的简单运用，有字符数限制
+//    starsrch(); // strncmp函数的简单运用，有字符数限制
+//    copy1(); //strcpy函数和strncpy函数使用，一个不检查目的字符串尺寸，一个检查
+    format();
     return 0;
 }
