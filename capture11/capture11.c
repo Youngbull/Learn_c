@@ -315,3 +315,38 @@ void format()
     sprintf(formal,"%s, %-19s: $%6.2f\n",last,first,prize); // 第二个first与第三个prize的输出可以看一下输出结果，具体输出情况
     puts(formal);
 }
+
+    /*      字符串排序       */
+void stsrt(char *strings[], int num)
+{
+    char *temp;
+    int top,seek;
+
+    for(top = 0;top < num-1;top++)
+        for(seek = top+1;seek < num;seek++)
+            if(strcmp(strings[top],strings[seek]) > 0)
+            {
+                temp = strings[top];
+                strings[top] = strings[seek];
+                strings[seek] = temp; // 实际改变的是指针，同时包有了原始的字符串，存储也并没有改变。
+            }
+}
+void sort_str()
+{
+    char input[20][81];
+    char *ptstr[20];
+    int ct = 0;
+    int k;
+
+    printf("Input up to %d lines,and I will sort them.\n",20);
+    printf("To stop,press the Enter key at a line's start.\n");
+    while(ct < 20 && gets(input[ct]) != NULL && input[ct][0] != '\0') //这句话很重要，因为你要搞清楚每句的意思，针对的情况
+    {
+        ptstr[ct] = input[ct]; //???
+        ct++;
+    }
+    stsrt(ptstr,ct);
+    puts("\nHere's the sorted list: \n");
+    for(k = 0;k < ct;k++)
+        puts(ptstr[k]);
+}

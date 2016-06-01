@@ -32,6 +32,7 @@ int main()
 //    quit_chk(); //  使用strcmp函数达到输入quit字符退出或者达到规定数目退出，计数输入数据
 //    starsrch(); // strncmp函数的简单运用，有字符数限制
 //    copy1(); //strcpy函数和strncpy函数使用，一个不检查目的字符串尺寸，一个检查
-    format();
+//    format(); // sprintf函数使用，就是把不同的字符串按照一定格式结合在一起
+    sort_str();
     return 0;
 }
