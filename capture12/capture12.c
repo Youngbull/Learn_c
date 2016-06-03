@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "capture12.h"
 
     /*      内层定义覆盖外部定义实例        */
@@ -59,6 +60,7 @@ void loc_stat(void)
         trystat();
     }
 }
+
     /*      具有外部链接的静态变量（变量的定义放在所有函数之外，就创建了一外部变量。为更清晰，使用它的函数会用extern再次声明）     */
 //int hocus;
 //int magic();
@@ -94,6 +96,7 @@ void critic()
     printf("No luck, chunny. Try again.\n");
     scanf("%d",&units); // units是全局变量
 }
+
     /*      具有内部链接的静态变量（一句很重要的描述————具有静态存储时期、文件作用域以及内部链接）     */
 int count = 0; // 文件作用域，外部链接
 static int total = 0; // 静态定义，内部链接（在个人理解：本文件内部是全局变量，但是不能被其他函数调用）
@@ -132,4 +135,46 @@ void parta(void)
         printf("Enter a positive integer ( 0 to quit): ");
     }
     report_count();
+}
+
+    /*      分配内存（malloc和free函数）————使用库函数来分配和管理内存     */
+    /*
+     * malloc函数具有动态分配内存的功能：
+     * 需要一个指示所需内存字节数的参数，函数会在内存中寻找合适大小的块，它分配了块，却是匿名的。
+     * 但是malloc可以返回那块内存的第一个字节的地址，将其赋给一个指针变量。
+     * 这里可涉及void指针，malloc可返回数组指针、结构指针等，因此一般需要将返回的指针指派合适类型。
+     * 因此可以使用空指针作为其返回值，这样不会冲突。（malloc在找不到所需空间时候，会返回一个空指针）
+     *
+     * free函数的参数是先前malloc函数的返回地址，会释放先前分配的内存，内存持续时间就是从malloc到free
+     * 程序还可以调用exit函数，用来在内存分配失败时结束程序
+     */
+void dyn_arr()
+{
+    double *ptd;
+    int max,number,i = 0;
+
+    puts("What is the maximum number of type double entries?");
+    scanf("%d",&max);
+
+    ptd = (double *)malloc(max*sizeof(double)); // 分配相应大小的内存空间
+    if(ptd == NULL)
+    {
+        puts("Memory allocation failed. Goodebye. ");
+        exit(EXIT_FAILURE); // 不成功则退出
+    }
+
+    puts("Enter the values (q to quit): ");
+    while(i < max && scanf("%lf",&ptd[i]) == 1)
+        i++;
+    printf("Here aer your %d entries: \n",number = i);
+    for(i = 0;i < number;i++)
+    {
+        printf("%7.2f ",ptd[i]);
+        if(i%7 == 6)
+            putchar('\n'); // 每7个数据，输出一个换行字符
+    }
+    if(i % 7 != 0)
+        putchar('\n');
+    puts("Done.");
+    free(ptd); // 记得一定要用free函数释放空间，否则可能出现内存泄漏的问题
 }

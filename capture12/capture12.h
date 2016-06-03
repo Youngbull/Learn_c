@@ -7,5 +7,6 @@ void loc_stat();
 void global();
 void critic();
 void parta();
+void dyn_arr();
 
 #endif // CAPTURE12_H_INCLUDED
