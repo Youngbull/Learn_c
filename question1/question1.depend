@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1468753770 source:c:\learnc-git\question1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"main.h"
+
+1468753744 c:\learnc-git\question1\main.h
+
+1468754032 source:c:\learnc-git\question1\sqlist_opera.c
+	<stdio.h>
+	"main.h"
+
