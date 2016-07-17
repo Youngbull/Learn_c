@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1466152619 source:c:\learnc-git\capture15_6\capture15_6.c
+	<stdio.h>
+	<math.h>
+	"capture15_6.h"
+
+1466152426 source:c:\learnc-git\capture15_6\main.c
+	<stdio.h>
+	<stdlib.h>
+	"capture15_6.h"
+
+1466152819 c:\learnc-git\capture15_6\capture15_6.h
+
