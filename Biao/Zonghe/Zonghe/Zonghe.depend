@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1469502613 source:c:\learnc-git\链表\zonghe\zonghe\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"main.h"
+
+1469453742 source:c:\learnc-git\链表\zonghe\zonghe\singlelist.c
+	<stdio.h>
+	<stdlib.h>
+	"main.h"
+
+1469428928 source:c:\learnc-git\链表\zonghe\zonghe\sqlist.c
+	<stdio.h>
+	<stdlib.h>
+	"main.h"
+
+1469526589 c:\learnc-git\链表\zonghe\zonghe\main.h
+
+1469526440 source:c:\learnc-git\链表\zonghe\zonghe\zong.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"main.h"
+

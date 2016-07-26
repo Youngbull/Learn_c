@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1469156718 source:c:\learnc-git\Á´±í\cirlist\circlelist\main.c
+	<stdio.h>
+	<stdlib.h>
+	"main.h"
+
+1469157606 c:\learnc-git\Á´±í\cirlist\circlelist\main.h
+
+1469194657 source:c:\learnc-git\Á´±í\cirlist\circlelist\doulist.c
+	<stdio.h>
+	<stdlib.h>
+	"main.h"
+

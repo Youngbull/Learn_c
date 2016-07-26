@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1469117113 source:c:\learnc-git\Á´±í\singlelist\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Single.h"
+
+1469117094 c:\learnc-git\Á´±í\singlelist\single.h
+
+1469117266 source:c:\learnc-git\Á´±í\singlelist\singlelist.c
+	<stdio.h>
+	<stdlib.h>
+	"Single.h"
+
